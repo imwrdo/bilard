@@ -1,13 +1,15 @@
-
 #include "Game.h"
-
+#include "Ball.h"
+#include <vector>
+#include <iostream>
 
 using namespace std;
 using namespace sf;
 
 
 int main(){
-	cout << "Game started succesfully" << endl;
+	cout << "Game started succesfully\n" << endl;
+
 	// init game engine
 	Game game;
 
