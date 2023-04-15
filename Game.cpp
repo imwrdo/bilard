@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "Ball.h"
 // private functions
 
 void Game::initVariables()
@@ -52,6 +53,11 @@ void Game::initTable()
 	this->hole6.setFillColor(sf::Color::Black);
 }
 
+void Game::initBalls() {
+	this->ball = Ball(200.f, 100.f);
+	this->balls = Ball::generateBalls();
+}
+
 // constructors / destructors
 
 Game::Game()
@@ -59,6 +65,7 @@ Game::Game()
 	this->initVariables();
 	this->initWindow();
 	this->initTable();
+	this->initBalls();
 }
 
 Game::~Game()
@@ -113,16 +120,20 @@ void Game::render()
 	this->window->clear(sf::Color::White);
 
 	//draw game objects
-	// main part of the table drawing
+	// - main part of the table drawing
 	this->window->draw(this->table);
 
-	// holes drawing
+	// - holes drawing
 	this->window->draw(this->hole1);
 	this->window->draw(this->hole2);
 	this->window->draw(this->hole3);
 	this->window->draw(this->hole4);
 	this->window->draw(this->hole5);
 	this->window->draw(this->hole6);
-
+	this->ball.update();
+	this->window->draw(ball);
+	for (int i = 0; i < balls.size(); i++) {
+		this->window->draw(balls[i]);
+	}
 	this->window->display();
 }
