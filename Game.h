@@ -8,12 +8,12 @@
 #include<SFML/Audio.hpp>
 #include <cmath>
 #include <vector>
+#include "Ball.h"
 
 /* 
 *  Class that act as the game engine
 *  Wrapper class
 */
-
 class Game
 {
 private:
@@ -36,10 +36,13 @@ private:
 	sf::CircleShape hole5;
 	sf::CircleShape hole6;
 
+	Ball ball;
+	std::vector<Ball> balls;
 	// private functions
 	void initVariables();
 	void initWindow();
 	void initTable();
+	void initBalls();
 
 public:
 	// constructors / destructors
